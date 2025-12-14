@@ -196,9 +196,17 @@ npm run generate-audio -- --force         # Regenerate all posts
 
 **Testing TTS directly:**
 
+Generate sample audio with your own text:
+
 ```bash
-uv run --with modal modal run scripts/tts/chatterbox_tts.py --text "Test text" --output test.wav
+# Basic test
+uv run --with modal modal run scripts/tts/chatterbox_tts.py --text "Hello, welcome to my blog." --output test.wav
+
+# Longer text (keep under ~3000 chars)
+uv run --with modal modal run scripts/tts/chatterbox_tts.py --text "This is a longer paragraph demonstrating the text to speech capabilities." --output demo.wav
 ```
+
+First run takes ~30 seconds for cold boot, subsequent runs are much faster.
 
 **Limitations:**
 
