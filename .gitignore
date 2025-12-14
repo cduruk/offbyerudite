@@ -11,3 +11,10 @@ pnpm-debug.log*
 .idea/
 teaser.pptx
 ~$teaser.pptx
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.so

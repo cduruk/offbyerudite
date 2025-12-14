@@ -11,6 +11,7 @@
     "astro": "astro",
     "new-post": "tsx scripts/new-post.ts",
     "generate-og-images": "tsx scripts/generate-og-images.ts",
+    "generate-audio": "tsx scripts/generate-audio.ts",
     "format": "prettier --write **/*.{ts,tsx,css,astro,md} --ignore-path .gitignore",
     "format:check": "prettier --check **/*.{ts,tsx,css,astro,md} --ignore-path .gitignore",
     "lint": "eslint . --max-warnings 0",

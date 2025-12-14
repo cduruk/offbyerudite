@@ -170,6 +170,42 @@ description: 'Why you don't want to make this mistake'
   - Pass `--slug slug-one,slug-two` to regenerate specific posts (combine with `--all-posts` to overwrite existing assets).
   - Use `--tasks static` or `--no-static` to control whether static page OGs are rebuilt.
 
+## Audio Generation (TTS)
+
+Generate spoken audio versions of blog posts using Modal + Chatterbox TTS.
+
+**Usage:**
+
+```bash
+npm run generate-audio                    # Generate audio for posts without audio.wav
+npm run generate-audio -- --slug my-post  # Generate for specific post(s)
+npm run generate-audio -- --force         # Regenerate all posts
+```
+
+**How it works:**
+
+1. TypeScript orchestrator (`scripts/generate-audio.ts`) discovers posts and extracts plain text from MDX
+2. Text is cleaned (removes code blocks, components, special characters) and truncated to ~3000 chars
+3. Modal function (`scripts/tts/chatterbox_tts.py`) runs Chatterbox TTS on GPU to generate WAV audio
+4. Audio saved to post directory as `audio.wav`
+
+**Requirements:**
+
+- `uv` (Python package manager) - [docs.astral.sh/uv](https://docs.astral.sh/uv/)
+- Modal account with GPU access - run `modal setup` to authenticate
+
+**Testing TTS directly:**
+
+```bash
+uv run --with modal modal run scripts/tts/chatterbox_tts.py --text "Test text" --output test.wav
+```
+
+**Limitations:**
+
+- Text limited to ~3000 chars (longer text causes CUDA errors)
+- Cold boot takes ~30 seconds on Modal
+- Output is WAV format (MP3 conversion planned for future)
+
 ## Color Scheme
 
 - Maintain Flexoki color scheme consistency across all visual assets.
