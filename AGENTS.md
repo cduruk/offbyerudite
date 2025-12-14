@@ -194,6 +194,14 @@ npm run generate-audio -- --force         # Regenerate all posts
 - `uv` (Python package manager) - [docs.astral.sh/uv](https://docs.astral.sh/uv/)
 - Modal account with GPU access - run `modal setup` to authenticate
 
+**Deployment:**
+
+The Modal app is deployed for faster cold boots (memory snapshots). If you modify `scripts/tts/chatterbox_tts.py`, redeploy with:
+
+```bash
+uv run --with modal modal deploy scripts/tts/chatterbox_tts.py
+```
+
 **Testing TTS directly:**
 
 Generate sample audio with your own text:
